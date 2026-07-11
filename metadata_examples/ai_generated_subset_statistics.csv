@@ -1,0 +1,7 @@
+category,clip_count,duration_min_sec,duration_max_sec,duration_mean_sec,draft_questions
+collision_or_impact,20,3.2,6.125,4.59,60
+deformation_or_melting,20,3.2,6.125,4.306,60
+falling_or_gravity,20,3.2,6.125,4.348,60
+fire_smoke_or_burning,20,3.2,6.125,4.623,60
+glass_breaking_or_fragments,12,3.2,6.125,4.559,36
+liquid_pouring_or_flow,20,3.2,6.125,4.585,60

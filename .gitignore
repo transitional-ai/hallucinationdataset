@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.log
+*.tmp
+
+# Do not commit dataset video files.
+*.mp4
+*.mov
+*.mkv
+*.avi
+*.webm
+
+# Local dataset directories.
+VHD_pilot_dataset/videos/
+Dataset/raw/
+Dataset/processed/
