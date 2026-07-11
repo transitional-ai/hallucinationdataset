@@ -14,6 +14,7 @@ from PIL import Image, ImageTk
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CSV = ROOT / "hitl_real_question_review" / "real_question_reviewer_1.csv"
 AI_REVIEW_DIR = ROOT / "hitl_question_review"
+DATASET_ROOT = ROOT
 
 REQUIRED_FIELDS = [
     "question_valid",
@@ -66,7 +67,20 @@ def write_rows(csv_path: Path, fieldnames, rows):
 
 
 def video_path_for(row):
-    return ROOT / row["stimulus_path"]
+    candidates = []
+    for key in ("release_video_path", "stimulus_path"):
+        value = row.get(key, "").strip()
+        if not value:
+            continue
+        path = Path(value)
+        if path.is_absolute():
+            candidates.append(path)
+        candidates.append(DATASET_ROOT / value)
+        candidates.append(ROOT / value)
+    for path in candidates:
+        if path.exists():
+            return path
+    return candidates[0] if candidates else DATASET_ROOT / row.get("stimulus_path", "")
 
 
 def is_complete(row):
@@ -550,9 +564,17 @@ def self_test(csv_path: Path, max_videos: int):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--csv", default=str(DEFAULT_CSV))
+    parser.add_argument(
+        "--dataset-root",
+        default=str(ROOT),
+        help="Path to the extracted Kaggle dataset directory, e.g. VHD_pilot_dataset.",
+    )
     parser.add_argument("--self-test", action="store_true")
     parser.add_argument("--max-test-videos", type=int, default=30)
     args = parser.parse_args()
+
+    global DATASET_ROOT
+    DATASET_ROOT = Path(args.dataset_root).expanduser().resolve()
 
     csv_path = Path(args.csv)
     if not csv_path.is_absolute():

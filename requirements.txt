@@ -1,4 +1,3 @@
 pandas
-numpy
 opencv-python
 pillow
