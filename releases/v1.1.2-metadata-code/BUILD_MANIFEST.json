@@ -1,0 +1,33 @@
+﻿{
+    "schema_version":  "vhd-metadata-code-only-archive-1.0",
+    "created_at_utc":  "2026-08-01T03:01:10Z",
+    "release_version":  "1.1.2",
+    "media_files_included":  0,
+    "questions":  801,
+    "source_groups":  341,
+    "cc_by_creator_caveat_derivative_notices":  42,
+    "private_mapping_included":  false,
+    "deposit_metadata_requires_author_completion":  true,
+    "sha256":  {
+                   "DEPOSIT_METADATA_TEMPLATE.json":  "ae7272820b211d91bb59796a67f93be0702809e8720810d52f6b02191e133633",
+                   "public/blind_evaluation_manifest.csv":  "6baf935cc636c84d1db3bc368405e2e3e3bb3fc3e995a41cbeef0dd83f69444a",
+                   "public/DATASET_CARD.md":  "120db9657d44b5902e8ffe865fb1220140f4f99a58b6fe397e1b4e6a2b540fa7",
+                   "public/frame_sampling_manifest.csv":  "9ecb8ec26a0d5330c9aa4b2a45afb963175c1e4e1e9563b81643d3afeb075699",
+                   "public/pdi_control_frame_plan.csv":  "5e8186d5b5a7fb4d86878d0f36f12d1c10b5fe4b372ca5bcb093f0ed87cdc885",
+                   "public/pdi_control_manifest.csv":  "82dd232eaf4f6b1c2be7a9e7b5a94291441d553ea7a153ba9f28afc9cb332d25",
+                   "publication_release/ATTRIBUTION_AUDIT.json":  "17fbf636a1e79ae9bd84c05e433b2f70cb40ea8035327a40ce80fb50b8844b2c",
+                   "publication_release/GOLD_LABELS.csv":  "487622059accbe783e6d417a7b4fe3f9986da0af96d43fddd0db53effb4e1602",
+                   "publication_release/GROUPS_AND_FOLDS.csv":  "b16c0eb3b92d9d5429b2d23ed8af5612f169c8c4cb916711a8b8fff35a16f57c",
+                   "publication_release/README.md":  "70aef488e90b2d5da7477cd5da8230d52ee10798a99de0ec4d46783dd7f6f81d",
+                   "publication_release/score_vhd_release.py":  "f710564bb52fadcb436db8c1fb458e8a2872cae607b5630e4cd5403c7f6b0f9d",
+                   "publication_release/THIRD_PARTY_NOTICES.csv":  "ed70e6b6828bf5433078cfc31cd9d113cc4d4459178e39ec3abb4b4f833712ec",
+                   "README.md":  "d208d7993406087c0f4304a82a0aad20f08eb074158723e8d342c8d4046f6421",
+                   "release_metadata/DOCUMENTATION_AMENDMENT_20260801.json":  "a11281cb007a91a31e6aee8329fe1b72fb0bb5869d13128d2a58980dacf1f4ec",
+                   "release_metadata/fold_metadata.json":  "ee5fb00d3a7693625df9029116869fe1d9c55a9c7ec400a2834d1e36abe7e093",
+                   "release_metadata/fold_summary.csv":  "0204a5bfa24b972f218d98c42f7cd995520abedeb417945e504313808334ce82",
+                   "release_metadata/README.md":  "b602f963d0a25f5c2951d58d62d6c6447842c849a9f6cfcd0f67bbcdcafd3490",
+                   "release_metadata/release_files_sha256.csv":  "2d3aadc4978c1464eb8e97412e5da24e9f0f30eeb2bae99d2a6ebb2326a4c7ad",
+                   "release_metadata/release_metadata.json":  "896e2ff4f4e2c4f85bad2de151e512d37965caf4653628656d41667c456abd58",
+                   "release_metadata/video_sha256.csv":  "bb32106d2d4a3c0212fb9a25a7f27bf3d0b330b1bb915f7e0eb0369ffc2875e7"
+               }
+}

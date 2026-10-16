@@ -122,6 +122,15 @@ def available_choices(row: pd.Series) -> list[str]:
     return choices
 
 
+def row_requires_confidence(row: pd.Series) -> bool:
+    value = str(row.get("requires_confidence", "")).strip().lower()
+    if value in {"yes", "true", "1"}:
+        return True
+    if value in {"no", "false", "0"}:
+        return False
+    return str(row.get("task", "")) == "vhd_ii_hce"
+
+
 def build_prompt(row: pd.Series, audio_used: bool, strict_retry: bool = False) -> str:
     choices = available_choices(row)
     option_lines = [
@@ -129,14 +138,24 @@ def build_prompt(row: pd.Series, audio_used: bool, strict_retry: bool = False) -
     ]
     evidence = "visual and audible evidence" if audio_used else "visual evidence"
     retry = "Your previous response did not follow the output format. " if strict_retry else ""
-    return (
+    base = (
         f"{retry}Inspect the video carefully and answer using only its {evidence}.\n"
         f"Question: {str(row['question_text']).strip()}\n"
         + "\n".join(option_lines)
+    )
+    if row_requires_confidence(row):
+        return (
+            base
+            + "\nReturn exactly one JSON object and no explanation. "
+            + 'Use this schema: {"choice":"<one allowed option>","confidence_percent":<integer percentage>}. '
+            + f"The allowed choice values are {choices}. confidence_percent must represent "
+            + "the estimated probability that the selected choice is correct."
+        )
+    return (
+        base
         + "\nReturn exactly one JSON object and no explanation. "
-        + 'Use this schema: {"choice":"<one allowed option>","confidence":<number>}. '
-        + f"The allowed choice values are {choices}. The confidence value must be a number "
-        + "from 0 to 1 representing the probability that the selected choice is correct."
+        + 'Use this schema: {"choice":"<one allowed option>"}. '
+        + f"The allowed choice values are {choices}."
     )
 
 
@@ -150,7 +169,9 @@ def normalise_confidence(value: Any) -> float | None:
     return confidence if 0 <= confidence <= 1 else None
 
 
-def parse_response(text: str, allowed: list[str]) -> tuple[str, float | None, str]:
+def parse_response(
+    text: str, allowed: list[str], require_confidence: bool
+) -> tuple[str, float | None, str]:
     cleaned = text.strip()
     for candidate in reversed(re.findall(r"\{[^{}]*\}", cleaned, flags=re.DOTALL)):
         try:
@@ -158,19 +179,23 @@ def parse_response(text: str, allowed: list[str]) -> tuple[str, float | None, st
         except json.JSONDecodeError:
             continue
         choice = str(payload.get("choice", "")).strip().upper()
-        confidence = normalise_confidence(payload.get("confidence"))
-        if choice in allowed and confidence is not None:
+        confidence = normalise_confidence(
+            payload.get("confidence_percent", payload.get("confidence"))
+        )
+        if choice in allowed and (confidence is not None or not require_confidence):
             return choice, confidence, "json"
 
     choice_match = re.search(
         r"(?:choice|answer)\s*[:=]\s*[\"']?([A-D])\b", cleaned, re.IGNORECASE
     )
     confidence_match = re.search(
-        r"confidence\s*[:=]\s*[\"']?([0-9]*\.?[0-9]+)", cleaned, re.IGNORECASE
+        r"confidence(?:_percent)?\s*[:=]\s*[\"']?([0-9]*\.?[0-9]+)",
+        cleaned,
+        re.IGNORECASE,
     )
     choice = choice_match.group(1).upper() if choice_match else ""
     confidence = normalise_confidence(confidence_match.group(1)) if confidence_match else None
-    if choice in allowed and confidence is not None:
+    if choice in allowed and (confidence is not None or not require_confidence):
         return choice, confidence, "regex"
     if choice in allowed:
         return choice, None, "choice_only"
@@ -476,9 +501,17 @@ class MiniCPMOmniAdapter:
 
 def load_manifest(path: Path) -> pd.DataFrame:
     frame = pd.read_csv(path, dtype=str, keep_default_na=False, encoding="utf-8-sig")
-    missing = [column for column in MANIFEST_COLUMNS if column not in frame.columns]
+    optional_columns = {"option_C", "option_D"}
+    missing = [
+        column
+        for column in MANIFEST_COLUMNS
+        if column not in frame.columns and column not in optional_columns
+    ]
     if missing:
         raise ValueError(f"Manifest is missing columns: {missing}")
+    for column in optional_columns:
+        if column not in frame.columns:
+            frame[column] = ""
     if frame["question_id"].duplicated().any():
         raise ValueError("Manifest contains duplicate question_id values")
     if len(frame) != 807:
@@ -664,18 +697,21 @@ def run(args: argparse.Namespace) -> None:
                 }
             )
             allowed = available_choices(row)
+            require_confidence = row_requires_confidence(row)
             try:
                 for attempt in (1, 2):
                     prompt = build_prompt(row, use_audio, strict_retry=(attempt == 2))
                     response = adapter.generate(video_path, prompt, use_audio)
                     record[f"raw_response_attempt_{attempt}"] = response
                     record["attempt_count"] = attempt
-                    choice, confidence, parse_status = parse_response(response, allowed)
+                    choice, confidence, parse_status = parse_response(
+                        response, allowed, require_confidence
+                    )
                     record["refusal"] = record["refusal"] or is_refusal(response)
                     record["selected_choice"] = choice
                     record["confidence"] = "" if confidence is None else confidence
                     record["parse_status"] = parse_status
-                    if choice and confidence is not None:
+                    if choice and (confidence is not None or not require_confidence):
                         break
             except Exception as exc:
                 record["error_type"] = type(exc).__name__

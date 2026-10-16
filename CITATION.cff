@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use VHD or these tools, please cite the associated paper and this repository."
+title: "Video Hallucination Diagnosis (VHD) v1.1.2 Metadata and Evaluation Tools"
+type: dataset
+version: "1.1.2"
+authors:
+  - family-names: Ren
+    given-names: Guoxiang
+  - family-names: Chandra
+    given-names: Rohitash
+repository-code: "https://github.com/transitional-ai/hallucinationdataset"
+url: "https://github.com/transitional-ai/hallucinationdataset"
+keywords:
+  - video question answering
+  - video-language models
+  - hallucination diagnosis
+  - temporal evidence
+  - confidence calibration

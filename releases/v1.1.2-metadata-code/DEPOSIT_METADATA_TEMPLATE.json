@@ -1,0 +1,38 @@
+{
+  "title": "VHD v1.1.2: Metadata, Human-Adjudicated Labels, Folds, Provenance Notices, and Evaluation Code",
+  "upload_type": "dataset",
+  "version": "1.1.2",
+  "publication_date": "[YYYY-MM-DD AT DEPOSIT]",
+  "description": "Non-media reproducibility archive for the VHD diagnostic VideoQA dataset. Contains 801 frozen question records, adjudicated labels, anonymous source-group folds over 341 source clips, per-file provenance notices, deterministic frame/control manifests, checksums, a dataset card, and standalone scoring code. Video files are excluded pending creator confirmation for 42 derivatives from two Internet Archive items.",
+  "creators": [
+    {
+      "name": "[FAMILY NAME, GIVEN NAME]",
+      "affiliation": "[FULL OFFICIAL AFFILIATION]",
+      "orcid": "[ORCID OR REMOVE FIELD]"
+    },
+    {
+      "name": "Chandra, Rohitash",
+      "affiliation": "[FULL OFFICIAL AFFILIATION]",
+      "orcid": "[ORCID OR REMOVE FIELD]"
+    }
+  ],
+  "keywords": [
+    "Video question answering",
+    "Hallucination",
+    "Selective prediction",
+    "Confidence calibration",
+    "Temporal evidence",
+    "Dataset shift"
+  ],
+  "license": "[AUTHOR MUST SELECT A LICENSE FOR ORIGINAL METADATA/CODE]",
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "[MANUSCRIPT DOI WHEN AVAILABLE]",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-article"
+    }
+  ],
+  "notes": "This deposit excludes all video files. Third-party provenance notices preserve the original source terms and do not relicense external works. Complete media redistribution remains pending creator confirmation for SmallWaterfall and Yewenyi-atTheCampfire367."
+}
+

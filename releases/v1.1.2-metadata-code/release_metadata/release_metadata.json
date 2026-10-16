@@ -1,0 +1,33 @@
+﻿{
+    "release_name":  "VHD blind evaluation release",
+    "release_version":  "1.1.2",
+    "status":  "frozen_before_first_final_rerun",
+    "created_utc":  "2026-07-17T02:18:02.7362590Z",
+    "supersedes":  "v1.1.1",
+    "main_questions":  801,
+    "task_counts":  {
+                        "accuracy":  333,
+                        "vhd_i_pdi":  178,
+                        "vhd_ii_hce":  290
+                    },
+    "pdi_control_questions":  712,
+    "randomized_public_question_ids":  true,
+    "randomized_media_filenames":  true,
+    "randomized_main_manifest_order":  true,
+    "randomized_control_manifest_order":  true,
+    "per_question_context_isolation_required":  true,
+    "primary_audio_policy":  "disabled",
+    "frame_count":  16,
+    "generation":  {
+                       "reasoning_effort":  "low",
+                       "decoding":  "greedy",
+                       "maximum_new_tokens":  32,
+                       "seed_where_supported":  42
+                   },
+    "main_manifest_sha256":  "6baf935cc636c84d1db3bc368405e2e3e3bb3fc3e995a41cbeef0dd83f69444a",
+    "frame_manifest_sha256":  "9ecb8ec26a0d5330c9aa4b2a45afb963175c1e4e1e9563b81643d3afeb075699",
+    "control_manifest_sha256":  "82dd232eaf4f6b1c2be7a9e7b5a94291441d553ea7a153ba9f28afc9cb332d25",
+    "control_frame_plan_sha256":  "5e8186d5b5a7fb4d86878d0f36f12d1c10b5fe4b372ca5bcb093f0ed87cdc885",
+    "scoring_key_sha256":  "3625bb59b7c6f877685e618e7cd14059c3add77ffaa728876a8c79e9137f4d4a",
+    "control_key_sha256":  "6abe8f10aa9256de3d2a2b7ec6d0e45dcc8d491ce823c6c62aca9df6e13d36f8"
+}

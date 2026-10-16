@@ -1,0 +1,36 @@
+{
+  "authoritative_terms": {
+    "MIT": "https://opensource.org/license/mit",
+    "NASA": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+    "VideoPhy-2_dataset": "https://huggingface.co/datasets/videophysics/videophy2_test"
+  },
+  "blind_package_changed": false,
+  "creator_caveat": "Sixteen source clips (42 derivative files) from two Internet Archive items use an explicitly labelled uploader attribution because the official item metadata supplies no creator.",
+  "creator_unavailable_source_clips": 16,
+  "creator_unavailable_uploader_attribution_notices": 42,
+  "nasa_recovered_sources_matched_to_verified_downloads": 8,
+  "notice_rows": 801,
+  "release_version": "1.1.2",
+  "schema_version": "vhd-publication-documentation-audit-1.0",
+  "sha256": {
+    "GOLD_LABELS.csv": "487622059accbe783e6d417a7b4fe3f9986da0af96d43fddd0db53effb4e1602",
+    "GROUPS_AND_FOLDS.csv": "b16c0eb3b92d9d5429b2d23ed8af5612f169c8c4cb916711a8b8fff35a16f57c",
+    "THIRD_PARTY_NOTICES.csv": "ed70e6b6828bf5433078cfc31cd9d113cc4d4459178e39ec3abb4b4f833712ec",
+    "internet_archive_attribution_overrides.csv": "2362096016813cd42064223a0434ad6fc104994acbc49a908e09962a70db8eea",
+    "score_vhd_release.py": "f710564bb52fadcb436db8c1fb458e8a2872cae607b5630e4cd5403c7f6b0f9d"
+  },
+  "source_clips": 341,
+  "source_counts": {
+    "Internet Archive": 120,
+    "NASA Image and Video Library": 59,
+    "VideoPhy-2": 96,
+    "Wikimedia Commons": 66
+  },
+  "status": "PUBLICATION_STAGING_ONLY",
+  "task_counts": {
+    "accuracy": 333,
+    "vhd_i_pdi": 178,
+    "vhd_ii_hce": 290
+  },
+  "unique_release_video_paths": 801
+}

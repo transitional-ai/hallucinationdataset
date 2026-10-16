@@ -1,0 +1,12 @@
+﻿{
+    "seed":  20260717,
+    "fold_count":  5,
+    "assignment_unit":  "source clip",
+    "stratification":  "video_split x vhd_category x task_signature",
+    "algorithm":  "stable SHA-256 ordering with a deterministic per-stratum fold offset",
+    "clip_count":  341,
+    "item_count":  801,
+    "scoring_key_sha256":  "3625bb59b7c6f877685e618e7cd14059c3add77ffaa728876a8c79e9137f4d4a",
+    "clip_folds_sha256":  "0b9de427eeea5f95eb6112a028a80c72d8672d1e1466fd45d8560d57e241d756",
+    "no_clip_crosses_folds":  true
+}

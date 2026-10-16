@@ -1,0 +1,22 @@
+{
+  "schema_version": "vhd-release-documentation-amendment-1.0",
+  "release_version": "1.1.2",
+  "created_utc": "2026-07-31T21:44:32Z",
+  "scope": "documentation_only",
+  "changes": [
+    "Added an accurate release-level dataset card after the blind evaluation package was frozen.",
+    "Replaced obsolete provisional-subset status with final v1.1.2 counts, adjudication evidence, intended use, limitations, and redistribution boundaries."
+  ],
+  "scientific_state_changed": false,
+  "videos_changed": false,
+  "questions_changed": false,
+  "labels_changed": false,
+  "folds_changed": false,
+  "existing_release_hash_inventory_changed": false,
+  "files": {
+    "public/DATASET_CARD.md": {
+      "bytes": 6254,
+      "sha256": "120db9657d44b5902e8ffe865fb1220140f4f99a58b6fe397e1b4e6a2b540fa7"
+    }
+  }
+}

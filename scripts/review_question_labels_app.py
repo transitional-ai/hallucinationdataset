@@ -34,9 +34,9 @@ CATEGORY_LABELS = {
 }
 
 TASK_LABELS = {
-    "accuracy": "Accuracy question",
-    "vhd_i_pdi": "VHD-I reversed-video language-prior question",
-    "vhd_ii_hce": "VHD-II masked-evidence uncertainty question",
+    "accuracy": "Visible-event control",
+    "vhd_i_pdi": "Prior-conflict reversal",
+    "vhd_ii_hce": "Concealed evidence",
 }
 
 STIMULUS_LABELS = {
@@ -334,10 +334,10 @@ class QuestionReviewApp:
         complete = "complete" if is_complete(row) else "incomplete"
         self.meta_label.config(
             text=(
-                f"{row.get('question_id', '')}\n"
-                f"Video: {row.get('clip_id', '')} | Category: {category_label(row)}\n"
+                f"Record: {row.get('clip_id', '')} | Status: {complete}\n"
+                f"Category: {category_label(row)}\n"
                 f"Task: {label_or_raw(TASK_LABELS, row.get('task', ''))} | "
-                f"Stimulus: {label_or_raw(STIMULUS_LABELS, row.get('stimulus_type', ''))} | Status: {complete}"
+                f"Stimulus: {label_or_raw(STIMULUS_LABELS, row.get('stimulus_type', ''))}"
             )
         )
         self.question_label.config(text=f"Question:\n{display['question']}")
