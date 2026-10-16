@@ -9,6 +9,7 @@ Related resources:
 - [Main paper code and held-out results](https://github.com/sydney-machine-learning/video-hallucination-diagnosis)
 - [Public Kaggle pilot package](https://www.kaggle.com/datasets/mlopssss/video-hallucination-diagnosis)
 - [VHD v1.1.2 metadata and evaluation-code archive](releases/v1.1.2-metadata-code)
+- [Proposed Kaggle data card text](docs/KAGGLE_DATA_CARD.md)
 
 ## Release status
 
